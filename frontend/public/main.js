@@ -1,5 +1,7 @@
 import * as THREE from 'three';
-import { CinematicCamera } from 'three/addons/cameras/CinematicCamera.js';
+//import * as THREE from './node_modules/three.js';
+
+import { CinematicCamera } from './node_modules/three/addons/cameras/CinematicCamera.js';
 
 			let camera, scene, renderer;
 

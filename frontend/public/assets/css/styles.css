@@ -76,3 +76,80 @@ body {
   padding: 20px;
   cursor: pointer;
 }
+
+body {
+  background-color: #b2d6f58a;
+  font-family: "Lucida Console", Monaco, monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+#notepad {
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  margin: 20px auto;
+  max-width: 800px;
+  padding: 20px;
+}
+#notepad h1 {
+  font-size: 24px;
+  margin: 0 0 10px;
+}
+#notepad p {
+  margin: 0;
+}
+
+#navbar-brand {
+  background-color: rgb(146, 198, 254);
+}
+
+h2 {
+  text-align: left;
+}
+h4 {
+  text-align: left;
+  margin-left: 5%;
+}
+
+.sidebar {
+  width: 250px;
+  height: 100%;
+  background-color: #f1f1f1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+.sidebar a {
+  display: block;
+  padding: 6px 8px;
+  text-decoration: none;
+  font-size: 16px;
+  color: #333;
+}
+.sidebar a:hover {
+  background-color: #555;
+  color: white;
+}
+.section {
+  padding: 10px;
+}
+.button {
+  display: block;
+  width: 70%;
+  margin-left: 30%;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #ddd;
+  border: none;
+  text-align: left;
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
+}
+.button:hover {
+  background-color: #bbb;
+}
