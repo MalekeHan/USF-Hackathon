@@ -5,6 +5,7 @@ const mongoose = require('mongoose'); //An Object Data Modeling library for Mong
 const cors = require('cors'); //middleware allows requests from different origins
 const dotenv = require('dotenv'); //loads environment variables from a .env file
 const openaiRoutes = require('./routes/openaiRoutes');
+const Note = require('./models/noteModel');
 
 
 dotenv.config();  //Load variables from .env file into process.env
