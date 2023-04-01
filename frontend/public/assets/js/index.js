@@ -3,6 +3,7 @@ let noteText;
 let saveNoteBtn;
 let newNoteBtn;
 let noteList;
+const baseURL = "http://localhost:5000/api/openai/";
 
 if (window.location.pathname === '/notes') {
   noteTitle = document.querySelector('.note-title');
@@ -33,14 +34,43 @@ const getNotes = () =>
     },
   });
 
-const saveNote = (note) =>
-  fetch('/api/notes', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(note),
-  });
+// const saveNote = (note) =>
+//   fetch('/api/notes', {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify(note),
+//   });
+const saveNote = document.getElementById("saveNoteBtn").addEventListener("click", async () => {
+  const noteContent = document.getElementById("noteInput").value;
+
+  if (noteContent === "") {
+    alert("Please enter some content for the note.");
+    return;
+  }
+
+  try {
+    const response = await fetch(`${baseURL}/notes`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ content: noteContent }),
+    });
+
+    const data = await response.json();
+
+    if (response.status === 200) {
+      alert("Note saved successfully.");
+      document.getElementById("noteInput").value = ""; // Clear the textarea after saving
+    } else {
+      alert("Error saving note: " + data.error);
+    }
+  } catch (error) {
+    alert("Error saving note: " + error.message);
+  }
+});
 
 const deleteNote = (id) =>
   fetch(`/api/notes/${id}`, {
