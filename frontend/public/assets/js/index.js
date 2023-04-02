@@ -20,12 +20,6 @@ const show = (elem) => {
 };
 show(saveNoteBtn);
 
-// // Hide an element
-// const hide = (elem) => {
-//   elem.style.display = 'none';
-// };
-
-// activeNote is used to keep track of the note in the textarea
 let activeNote = {};
 
 const getNotes = () =>
@@ -36,36 +30,39 @@ const getNotes = () =>
     },
   });
 
-const saveNote = document.getElementById("saveNoteBtn").addEventListener("click", async () => {
-  const noteContent = document.getElementById("noteInput").value;
 
-  if (noteContent === "") {
-    alert("Please enter some content for the note.");
-    return;
-  }
-
-  try {
-    const response = await fetch(`${baseURL}/notes`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ content: noteContent }),
-    });
-
-    const data = await response.json();
-
-    if (response.status === 200) {
-      alert("Note saved successfully.");
-      document.getElementById("noteInput").value = ""; // Clear the textarea after saving
-    } else {
-      alert("Error saving note: " + data.error);
+  const saveNote = document.getElementById("saveNoteBtn").addEventListener("click", async () => {
+    const noteContent = document.getElementById("noteInput").value;
+    const noteTitle = document.getElementById("noteTitleInput").value;
+  
+    if (noteContent === "") {
+      alert("Please enter some content for the note.");
+      return;
     }
-  } catch (error) {
-    alert("Error saving note: " + error.message);
-  }
-});
-
+  
+    try {
+      const response = await fetch(`${baseURL}/notes`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ content: noteContent}),
+      });
+  
+      const data = await response.json();
+  
+      if (response.status === 200) {
+        alert("Note saved successfully.");
+        document.getElementById("noteInput").value = ""; // Clear the textarea after saving
+        document.getElementById("noteTitleInput").value = "";
+      } else {
+        alert("Error saving note: " + data.error);
+      }
+    } catch (error) {
+      alert("Error saving note: " + error.message);
+    }
+  });
+  
 
 const fetchFolders = async () => {
   try {
@@ -80,6 +77,32 @@ const fetchFolders = async () => {
 
 const foldersButton = document.getElementById('foldBtn');
 foldersButton.addEventListener('click', fetchFolders);
+
+
+const enhanceNote = async () => {
+  try {
+    const noteInput = document.getElementById('noteInput');
+    const response = await fetch(`${baseURL}/enhance`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        prompt: noteInput.value
+      })
+    });
+    console.log("THIS WAS THE INPUT: " + noteInput.value);
+    const data = await response.json();
+    console.log(data.completion); // log the response from the API
+    noteInput.value = data.completion; // update the note input with the response from the API
+  } catch (error) {
+    console.error('Error enhancing note:', error.message);
+  }
+};
+
+const enhanceButton = document.getElementById('enhance');
+enhanceButton.addEventListener('click', enhanceNote);
+
 
 
 const deleteNote = (id) =>
