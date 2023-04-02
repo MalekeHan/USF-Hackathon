@@ -20,6 +20,10 @@ const show = (elem) => {
 };
 show(saveNoteBtn);
 
+// // Hide an element
+// const hide = (elem) => {
+//   elem.style.display = 'none';
+// };
 
 // activeNote is used to keep track of the note in the textarea
 let activeNote = {};
@@ -134,6 +138,7 @@ const handleNewNoteView = (e) => {
   renderActiveNote();
 };
 
+
 // Render the list of note titles
 const renderNoteList = async (notes) => {
   let jsonNotes = await notes.json();
@@ -192,7 +197,6 @@ const renderNoteList = async (notes) => {
 const getAndRenderNotes = () => getNotes().then(renderNoteList);
 
 if (window.location.pathname === '/notes') {
-  saveNoteBtn.addEventListener('click', handleNoteSave);
   newNoteBtn.addEventListener('click', handleNewNoteView);
   noteTitle.addEventListener('keyup', handleRenderSaveBtn);
   noteText.addEventListener('keyup', handleRenderSaveBtn);
