@@ -134,7 +134,7 @@ const quizNote = async () => {
   console.log("ENTERED IN THE quizNote");
   try {
     const noteInput = document.getElementById('noteInput');
-    const response = await fetch(`${baseURL}/eli5`, {
+    const response = await fetch(`${baseURL}/quiz`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
