@@ -1,3 +1,12 @@
+:root {
+  --whitesmoke: whitesmoke;
+  --grey: #757575;
+  --vanilla: #ccc;
+  --darkgrey: #333;
+  --blue: #b2d6f58a;
+}
+
+
 html,
 body {
   height: 100%;
@@ -18,7 +27,7 @@ body {
 
 .note-textarea,
 .note-title {
-  color: #000000;
+  color: black;
   width: 100%;
   outline: none;
   border: none;
@@ -38,7 +47,7 @@ body {
 
 .note-title:read-only,
 .note-textarea:read-only {
-  color: #757575;
+  color: var(--grey);
 }
 
 .list-container .card {
@@ -78,7 +87,7 @@ body {
 }
 
 body {
-  background-color: #b2d6f58a;
+  background-color: var(--blue);
   font-family: "Lucida Console", Monaco, monospace;
   font-size: 14px;
   line-height: 1.5;
@@ -87,12 +96,13 @@ body {
 }
 
 #notepad {
-  background-color: #ffffff;
-  border: 1px solid #ccc;
+  background-color: white;
+  border: 1px solid var(--vanilla);
   box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
   margin: 20px 0 20px 270px;
   max-width: 800px;
   padding: 20px;
+  margin-left: 25%;
 
 }
 #notepad h1 {
@@ -104,26 +114,25 @@ body {
 }
 
 #navbar-brand {
-  background-color: rgb(146, 198, 254);
-  color: gray
+  background-color: var(--blue);
 }
 
 h2 {
   text-align: left;
 }
+
 h4 {
   text-align: left;
-  margin-left: 5%;
+  margin-left: 10%;
 }
 
 .sidebar {
   width: 250px;
   height: 100%;
-  background-color: #f1f1f1;
+  background-color: var(--whitesmoke);
   position: fixed;
   top: 0;
   left: 0;
-  margin-left: 10px;
   overflow-x: hidden;
   padding-top: 20px;
 }
@@ -132,7 +141,7 @@ h4 {
   padding: 6px 8px;
   text-decoration: none;
   font-size: 16px;
-  color: #333;
+  color: var(--darkgrey);
 }
 .sidebar a:hover {
   background-color: #555;
@@ -147,13 +156,27 @@ h4 {
   margin-left: 30%;
   padding: 10px;
   margin-bottom: 10px;
-  background-color: #ddd;
+  background-color: var(--whitesmoke);
   border: none;
   text-align: left;
   font-size: 16px;
-  color: #333;
+  color: var(--blue);
   cursor: pointer;
 }
 .button:hover {
   background-color: #bbb;
 }
+
+.fetch {
+  display: block;
+  width: 70%;
+  margin-left: 30%;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: var(--vanilla);
+  border: none;
+  text-align: left;
+  font-size: 16px;
+  color: var(--darkgrey);
+}
+

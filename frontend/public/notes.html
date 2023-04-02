@@ -16,7 +16,7 @@
   <div id="notepad">
     <!-- <nav class="navbar navbar-dark bg-dark"> -->
       <nav class="navbar navbar-dark bg-light">
-      <a class="navbar-brand" href="/">Note Taker </a>
+      <a class="navbar-brand text-dark" href="/">Note Taker </a>
       <div class="icons">
         <i class="fas fa-save text-dark save-note" id="saveNoteBtn"></i>
 
@@ -39,25 +39,29 @@
   </div>
   <div class="sidebar">
     <div class="section">
-      <h2>Section</h2>
-      <button class="button" id="foldBtn">Folders</button>
-      <table id="foldersTable">
-        <thead>
-          <tr>
-            <th>Folder Name</th>
-          </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
+      <h4>Folder Name</h4>
+      <button class="button" id="foldBtn">All</button>
       <button class="button" id="lockBtn">Locked</button>
       <button class="button" id="rdBtn">Recently Deleted</button>
-      <button class="button" id="allBtn">All</button>
     </div>
     <h4>Recents</h4>
     <div class="section">
-      <button class="button">Button 3</button>
-      <button class="button">Button 4</button>
+      <div class="fetch" id="fetch1">Note1</div>
+      <div class="fetch" id="fetch2">Note2</div>
+      <p id="note-content"></p>
+      <p id="created-at"></p>
+      <script>
+        // Retrieve note content from server
+        fetch('/note/6427ec9f3931f59acfdef8d9')
+          .then(response => response.json())
+          .then(note => {
+            // Update HTML elements with note content
+            const noteContent = document.getElementById('note-content');
+            const createdAt = document.getElementById('created-at');
+            noteContent.innerText = note.content;
+            createdAt.innerText = note.createdAt.$date;
+          });
+      </script>
     </div>
     <h4>Share</h4>
     <div class="section">
