@@ -145,8 +145,9 @@ const quizNote = async () => {
     });
     console.log("THIS WAS THE INPUT: " + noteInput.value);
     const data = await response.json();
-    console.log(data.completion); // log the response from the API
-    noteInput.value = data.completion; // update the note input with the response from the API
+    console.log(data.questions); // log the questions array from the API
+    const quizOutput = data.questions.join('\n'); // join the questions array into a string with newlines
+    noteInput.value = `${noteInput.value}\n\n${quizOutput}`; // update the note input with the questions
   } catch (error) {
     console.error('Error quizNote note:', error.message);
   }

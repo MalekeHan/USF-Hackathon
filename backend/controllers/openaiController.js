@@ -15,7 +15,7 @@ exports.enhanceController = async (req, res) => {
       {
         model: 'text-davinci-003',
         prompt: inputPrompt,
-        max_tokens: 100,
+        max_tokens: 200,
         temperature: 0.6,
       },
       {
@@ -67,7 +67,8 @@ exports.eli5Controller = async (req, res) => {
 exports.quizController = async (req, res) => {
   try {
     // Check if the number of questions is valid
-    const numQuestions = parseInt(req.body.numQuestions);
+    // const numQuestions = parseInt(req.body.numQuestions);
+    const numQuestions =10;
     if (!Number.isInteger(numQuestions) || numQuestions < 1 || numQuestions > 7) {
       res.status(400).json({ error: 'Number of questions must be an integer between 1 and 7' });
       return;
@@ -84,7 +85,7 @@ exports.quizController = async (req, res) => {
       {
         model: 'text-davinci-003',
         prompt: inputPrompt,
-        max_tokens: 200,
+        max_tokens: 500,
         temperature: 0.6,
       },
       {
