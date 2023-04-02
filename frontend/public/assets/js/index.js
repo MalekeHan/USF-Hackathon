@@ -3,7 +3,7 @@ let noteText;
 let saveNoteBtn;
 let newNoteBtn;
 let noteList;
-const baseURL = "http://localhost:5000/api/openai/";
+const baseURL = "https://notes-app-backend-usf-hack.herokuapp.com/api/openai/";
 
 if (window.location.pathname === '/notes') {
   noteTitle = document.querySelector('.note-title');
@@ -217,9 +217,7 @@ const handleNewNoteView = (e) => {
 // Render the list of note titles
 const renderNoteList = async (notes) => {
   let jsonNotes = await notes.json();
-  // if (window.location.pathname === '/notes') {
-  //   noteList.forEach((el) => (el.innerHTML = ''));
-  // }
+
 
   let noteListItems = [];
 
@@ -262,19 +260,10 @@ const renderNoteList = async (notes) => {
 
     noteListItems.push(li);
   });
-
-  // if (window.location.pathname === '/notes') {
-  //   noteListItems.forEach((note) => noteList[0].append(note));
-  // }
 };
 
-// Gets notes from the db and renders them to the sidebar
 const getAndRenderNotes = () => getNotes().then(renderNoteList);
 
-// if (window.location.pathname === '/notes') {
-//   newNoteBtn.addEventListener('click', handleNewNoteView);
-//   noteTitle.addEventListener('keyup', handleRenderSaveBtn);
-//   noteText.addEventListener('keyup', handleRenderSaveBtn);
-// }
+
 
 getAndRenderNotes();
