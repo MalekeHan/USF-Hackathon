@@ -85,13 +85,15 @@ body {
   margin: 0;
   padding: 0;
 }
+
 #notepad {
   background-color: #ffffff;
   border: 1px solid #ccc;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
-  margin: 20px auto;
+  margin: 20px 0 20px 270px;
   max-width: 800px;
   padding: 20px;
+
 }
 #notepad h1 {
   font-size: 24px;
@@ -103,6 +105,7 @@ body {
 
 #navbar-brand {
   background-color: rgb(146, 198, 254);
+  color: gray
 }
 
 h2 {
@@ -120,6 +123,7 @@ h4 {
   position: fixed;
   top: 0;
   left: 0;
+  margin-left: 10px;
   overflow-x: hidden;
   padding-top: 20px;
 }
