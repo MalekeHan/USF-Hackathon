@@ -1,7 +1,8 @@
 const axios = require('axios');
 const Note = require('../models/noteModel');
 
-exports.enahnceController = async (req, res) => {
+
+exports.enhanceController = async (req, res) => {
   try {
     const inputPrompt = `Take the following notes and please enhance them by adding more details. I want the notes to be at a university level: ${req.body.prompt}`;
     if (typeof inputPrompt !== 'string') {

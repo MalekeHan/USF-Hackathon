@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const {
-  enahnceController,
+  enhanceController,
   eli5Controller,
   quizController,
   chatCompletionsController,
@@ -14,7 +14,7 @@ const {
   createFolder,
 } = require('../controllers/folderController');
 
-router.post('/enhance', enahnceController);
+router.post('/enhance', enhanceController);
 router.post('/eli5', eli5Controller);
 router.post('/quiz', quizController);
 router.post('/chat', chatCompletionsController);
