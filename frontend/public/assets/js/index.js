@@ -33,7 +33,6 @@ const getNotes = () =>
 
   const saveNote = document.getElementById("saveNoteBtn").addEventListener("click", async () => {
     const noteContent = document.getElementById("noteInput").value;
-    const noteTitle = document.getElementById("noteTitleInput").value;
   
     if (noteContent === "") {
       alert("Please enter some content for the note.");
