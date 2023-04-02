@@ -104,6 +104,57 @@ const enhanceButton = document.getElementById('enhance');
 enhanceButton.addEventListener('click', enhanceNote);
 
 
+const limitNote = async () => {
+  console.log("ENTERED IN THE LIMIT");
+  try {
+    const noteInput = document.getElementById('noteInput');
+    const response = await fetch(`${baseURL}/eli5`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        prompt: noteInput.value
+      })
+    });
+    console.log("THIS WAS THE INPUT: " + noteInput.value);
+    const data = await response.json();
+    console.log(data.completion); // log the response from the API
+    noteInput.value = data.completion; // update the note input with the response from the API
+  } catch (error) {
+    console.error('Error limiting note:', error.message);
+  }
+};
+
+const limitButton = document.getElementById('limit');
+limitButton.addEventListener('click', limitNote);
+
+
+const quizNote = async () => {
+  console.log("ENTERED IN THE quizNote");
+  try {
+    const noteInput = document.getElementById('noteInput');
+    const response = await fetch(`${baseURL}/eli5`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        prompt: noteInput.value
+      })
+    });
+    console.log("THIS WAS THE INPUT: " + noteInput.value);
+    const data = await response.json();
+    console.log(data.completion); // log the response from the API
+    noteInput.value = data.completion; // update the note input with the response from the API
+  } catch (error) {
+    console.error('Error quizNote note:', error.message);
+  }
+};
+
+const quizButton = document.getElementById('quiz');
+quizButton.addEventListener('click', quizNote);
+
 
 const deleteNote = (id) =>
   fetch(`/api/notes/${id}`, {
