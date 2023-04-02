@@ -13,15 +13,13 @@ if (window.location.pathname === '/notes') {
   noteList = document.querySelectorAll('.list-container .list-group');
 }
 
+
 // Show an element
 const show = (elem) => {
   elem.style.display = 'inline';
 };
+show(saveNoteBtn);
 
-// Hide an element
-const hide = (elem) => {
-  elem.style.display = 'none';
-};
 
 // activeNote is used to keep track of the note in the textarea
 let activeNote = {};
@@ -34,14 +32,6 @@ const getNotes = () =>
     },
   });
 
-// const saveNote = (note) =>
-//   fetch('/api/notes', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify(note),
-//   });
 const saveNote = document.getElementById("saveNoteBtn").addEventListener("click", async () => {
   const noteContent = document.getElementById("noteInput").value;
 
@@ -72,6 +62,22 @@ const saveNote = document.getElementById("saveNoteBtn").addEventListener("click"
   }
 });
 
+
+const fetchFolders = async () => {
+  try {
+    const response = await fetch(`${baseURL}/folders`);
+    const data = await response.json();
+    console.log(data.folders); // log the retrieved folders
+    // Add your code to display the folders in the sidebar here
+  } catch (error) {
+    console.error('Error fetching folders:', error.message);
+  }
+};
+
+const foldersButton = document.getElementById('foldBtn');
+foldersButton.addEventListener('click', fetchFolders);
+
+
 const deleteNote = (id) =>
   fetch(`/api/notes/${id}`, {
     method: 'DELETE',
@@ -96,16 +102,6 @@ const renderActiveNote = () => {
   }
 };
 
-const handleNoteSave = () => {
-  const newNote = {
-    title: noteTitle.value,
-    text: noteText.value,
-  };
-  saveNote(newNote).then(() => {
-    getAndRenderNotes();
-    renderActiveNote();
-  });
-};
 
 // Delete the clicked note
 const handleNoteDelete = (e) => {
@@ -136,14 +132,6 @@ const handleNoteView = (e) => {
 const handleNewNoteView = (e) => {
   activeNote = {};
   renderActiveNote();
-};
-
-const handleRenderSaveBtn = () => {
-  if (!noteTitle.value.trim() || !noteText.value.trim()) {
-    hide(saveNoteBtn);
-  } else {
-    show(saveNoteBtn);
-  }
 };
 
 // Render the list of note titles
